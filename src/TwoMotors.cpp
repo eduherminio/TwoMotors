@@ -34,7 +34,7 @@ TwoMotors::TwoMotors(
 	//pinMode(p_PWM_L, OUTPUT);
 }
 
-void TwoMotors::change_serial(HardwareSerial& hardwareSerial)
+void TwoMotors::change_serial(HardwareSerial &hardwareSerial)
 {
 	ChosenSerial = &hardwareSerial;
 }
@@ -104,24 +104,24 @@ void TwoMotors::correct_speed()
 
 void TwoMotors::adapt_enables()
 {
-	if (signbit(speed[L]))
-	{ //	speed[L]<0 -> 01
+	if (signbit(speed[L]))	//speed[L]<0 -> 01
+	{
 		digitalWrite(p_LE1, LOW);
 		digitalWrite(p_LE2, HIGH);
 	}
-	else
-	{ // speed[L]>0 -> 10
+	else	// speed[L]>0 -> 10 
+	{
 		digitalWrite(p_LE1, HIGH);
 		digitalWrite(p_LE2, LOW);
 	}
 
-	if (signbit(speed[R]))
-	{ //	speed[R]<0 -> 01
+	if (signbit(speed[R]))	//	speed[R]<0 -> 01
+	{
 		digitalWrite(p_RE1, LOW);
 		digitalWrite(p_RE2, HIGH);
 	}
-	else
-	{ // speed[R]>0 -> 10
+	else	// speed[R]>0 -> 10
+	{
 		digitalWrite(p_RE1, HIGH);
 		digitalWrite(p_RE2, LOW);
 	}
@@ -138,10 +138,13 @@ bool TwoMotors::lower_speed()
 {
 	speed[L] = copysign(LOW_COEF * speed[L], speed[L]);
 	speed[R] = copysign(LOW_COEF * speed[R], speed[R]);
+
 	set_speed();
-	if (last_called != 1)
-		ChosenSerial->println("motors.lower_speed()");
-	last_called = 1;
+
+	// if (last_called != 1)
+	// 	ChosenSerial->println("motors.lower_speed()");
+	// last_called = 1;
+
 	return false;
 }
 
@@ -151,9 +154,11 @@ bool TwoMotors::forward()
 	speed[R] = FWD_SPEED;
 
 	set_speed();
-	if (last_called != 2)
-		ChosenSerial->println("motors.forward()");
-	last_called = 2;
+
+	// if (last_called != 2)
+	// 	ChosenSerial->println("motors.forward()");
+	// last_called = 2;
+
 	return false;
 }
 
@@ -163,9 +168,11 @@ bool TwoMotors::backward()
 	speed[R] = -BWD_SPEED;
 
 	set_speed();
-	if (last_called != 3)
-		ChosenSerial->println("motors.backward()");
-	last_called = 3;
+
+	// if (last_called != 3)
+	// 	ChosenSerial->println("motors.backward()");
+	// last_called = 3;
+
 	return false;
 }
 
@@ -175,7 +182,9 @@ bool TwoMotors::stop()
 	speed[R] = MIN_SPEED;
 
 	set_speed();
+
 	// ChosenSerial->println("motors.stop()");
+
 	return false;
 }
 
@@ -185,9 +194,11 @@ bool TwoMotors::right()
 	speed[R] = +MIN_SPEED;
 
 	set_speed();
-	if (last_called != 4)
-		ChosenSerial->println("motors.right()");
-	last_called = 4;
+
+	// if (last_called != 4)
+	// 	ChosenSerial->println("motors.right()");
+	// last_called = 4;
+
 	return false;
 }
 
@@ -197,9 +208,11 @@ bool TwoMotors::left()
 	speed[R] = +TRN_SPEED;
 
 	set_speed();
-	if (last_called != 5)
-		ChosenSerial->println("motors.left()");
-	last_called = 5;
+
+	// if (last_called != 5)
+	// 	ChosenSerial->println("motors.left()");
+	// last_called = 5;
+
 	return false;
 }
 
@@ -209,14 +222,16 @@ bool TwoMotors::left_fwd()
 	speed[R] = +TRN_SPEED;
 
 	set_speed();
-	if (last_called != 6)
-	{
-		ChosenSerial->print("motors.left_fwd()");
-		ChosenSerial->print(speed[L]);
-		ChosenSerial->print(" ");
-		ChosenSerial->println(speed[R]);
-	}
-	last_called = 6;
+
+	// if (last_called != 6)
+	// {
+	// 	ChosenSerial->print("motors.left_fwd()");
+	// 	ChosenSerial->print(speed[L]);
+	// 	ChosenSerial->print(" ");
+	// 	ChosenSerial->println(speed[R]);
+	// }
+	// last_called = 6;
+
 	return false;
 }
 
@@ -226,14 +241,16 @@ bool TwoMotors::right_fwd()
 	speed[R] = +TRN_SPEED_;
 
 	set_speed();
-	if (last_called != 7)
-	{
-		ChosenSerial->print("motors.right_fwd()");
-		ChosenSerial->print(speed[L]);
-		ChosenSerial->print(" ");
-		ChosenSerial->println(speed[R]);
-	}
-	last_called = 7;
+
+	// if (last_called != 7)
+	// {
+	// 	ChosenSerial->print("motors.right_fwd()");
+	// 	ChosenSerial->print(speed[L]);
+	// 	ChosenSerial->print(" ");
+	// 	ChosenSerial->println(speed[R]);
+	// }
+	// last_called = 7;
+
 	return false;
 }
 
@@ -244,9 +261,10 @@ bool TwoMotors::right_bwd()
 
 	set_speed();
 
-	if (last_called != 8)
-		ChosenSerial->println("motors.right_bwd()");
-	last_called = 8;
+	// if (last_called != 8)
+	// 	ChosenSerial->println("motors.right_bwd()");
+	// last_called = 8;
+
 	return false;
 }
 
@@ -257,9 +275,10 @@ bool TwoMotors::left_bwd()
 
 	set_speed();
 
-	if (last_called != 9)
-		ChosenSerial->println("motors.left_bwd()");
-	last_called = 9;
+	// if (last_called != 9)
+	// 	ChosenSerial->println("motors.left_bwd()");
+	// last_called = 9;
+
 	return false;
 }
 
@@ -269,9 +288,11 @@ bool TwoMotors::extra_power()
 	speed[R] = copysign(MAX_SPEED, speed[R]);
 
 	set_speed();
-	if (last_called != 10)
-		ChosenSerial->println("motors.extra_power()");
-	last_called = 10;
+
+	// if (last_called != 10)
+	// 	ChosenSerial->println("motors.extra_power()");
+	// last_called = 10;
+
 	return true;
 }
 
@@ -281,11 +302,14 @@ bool TwoMotors::backward_extrapower()
 	speed[R] = -MAX_SPEED;
 
 	set_speed();
-	if (last_called != 11)
-		ChosenSerial->println("motors.backward()");
-	last_called = 11;
+
+	// if (last_called != 11)
+	// 	ChosenSerial->println("motors.backward()");
+	// last_called = 11;
+
 	return false;
 }
+
 /*
 void TwoMotors::apply_trncoef(bool motor)	{
 	if(motor= MLEFT)

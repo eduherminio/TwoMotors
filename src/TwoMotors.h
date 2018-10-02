@@ -23,7 +23,7 @@ class TwoMotors
 	void adapt_enables();
 
 	void choose_speed(int speedL, int speedR);
-	void apply_trncoef(bool motor);
+	// void apply_trncoef(bool motor);
 	bool lower_speed();
 	bool extra_power();
 	bool forward();
@@ -50,7 +50,7 @@ class TwoMotors
 		p_RE2;
 #pragma endregion Motor pins
 
-	// Pines activos en cada momento
+	// Current active pins
 	uint8_t
 		_pin_PWM,
 		_pin_MI,
