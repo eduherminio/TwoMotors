@@ -1,2 +1,3 @@
 # TwoMotors
-Arduino library to control 2 DC motors
+
+Arduino library to control 2 DC motors using H-Bridge motor drivers.

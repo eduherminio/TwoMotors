@@ -1,0 +1,24 @@
+ENA	IN1	IN2
+||	||	||
+PWM	E1	E2
+ 
+0	1	1	Motor A off
+1	0	0	Motor A stopped (brakes)
+1	0	1	Motor A backwards
+1	1	0	Motor A forwards
+1	1	1	Motor A stopped (brakes)
+
+
+ENB	IN3	IN4
+||	||	||
+PWM	E1	E2
+
+1	0	0	Motor B stopped (brakes)
+1	0	1	Motor B backwards
+1	1	0	Motor B forwards
+1	1	1	Motor B stopped (brakes)
+
+
+https://electronilab.co/tutoriales/tutorial-de-uso-driver-dual-l298n-para-motores-dc-y-paso-a-paso-con-arduino/
+https://tronixlabs.com.au/news/tutorial-l298n-dual-motor-controller-module-2a-and-arduino/
+https://howtomechatronics.com/tutorials/arduino/arduino-dc-motor-control-tutorial-l298n-pwm-h-bridge/
